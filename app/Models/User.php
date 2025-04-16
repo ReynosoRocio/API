@@ -14,12 +14,10 @@ class User extends Authenticatable implements JWTSubject
     // Campos asignables masivamente
     protected $fillable = [
         'name',
-        'lastnames',
+        'lastname', // Updated field
         'dateBirth',
-        'areaId',
-        'type',
-        'CURP',
-        'IMSS',
+        'userType', // Updated field
+        'stateBirth', // Updated field
         'email',
         'password',
         'new_password',
@@ -30,12 +28,6 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password',
     ];
-
-    // Relación con la tabla `areas`
-    public function area()
-    {
-        return $this->belongsTo(Area::class, 'areaId');
-    }
 
     // Métodos requeridos por JWTSubject
     public function getJWTIdentifier()

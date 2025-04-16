@@ -15,16 +15,18 @@ class UserController extends Controller
     {
         $userType = JWTAuth::parseToken()->getClaim('userType');
         if ($userType != 0) {
-            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
+            return response()->json(['message' => 'Unauthorized the user is ' . $userType], 403);
         }
 
         // Validar los datos de entrada
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:80',
-            'lastnames' => 'required|string|max:80',
+            'lastname' => 'required|string|max:80', // Updated field
             'dateBirth' => 'required|date',
             'areaId' => 'required|integer|exists:areas,id',
             'type' => 'required|integer|between:0,3',
+            'userType' => 'required|integer|between:0,1', // Updated field
+            'stateBirth' => 'required|integer|between:1,32', // Updated field
             'CURP' => 'nullable|string|max:45|unique:users',
             'IMSS' => 'nullable|string|max:45|unique:users',
             'email' => 'required|string|email|max:80|unique:users',
@@ -38,16 +40,18 @@ class UserController extends Controller
         // Crear el usuario
         $user = User::create([
             'name' => $request->name,
+            'lastname' => $request->lastname, // Updated field
             'lastnames' => $request->lastnames,
             'dateBirth' => $request->dateBirth,
             'areaId' => $request->areaId,
             'type' => $request->type,
+            'userType' => $request->userType, // Updated field
+            'stateBirth' => $request->stateBirth, // Updated field
             'CURP' => $request->CURP,
             'IMSS' => $request->IMSS,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
 
         // Respuesta
         return response()->json([
@@ -55,9 +59,12 @@ class UserController extends Controller
             'user' => [
                 'id' => $user->encrypted_id,
                 'name' => $user->name,
+                'lastname' => $user->lastname, // Updated field
                 'lastnames' => $user->lastnames,
                 'dateBirth' => $user->dateBirth,
                 'type' => $user->type,
+                'userType' => $user->userType, // Updated field
+                'stateBirth' => $user->stateBirth, // Updated field
                 'CURP' => $user->CURP,
                 'IMSS' => $user->IMSS,
                 'email' => $user->email,
@@ -69,16 +76,19 @@ class UserController extends Controller
     {
         $userType = JWTAuth::parseToken()->getClaim('userType');
         if ($userType != 0) {
-            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
+            return response()->json(['message' => 'Unauthorized the user is ' . $userType], 403);
         }
 
         $users = User::all()->map(function ($user) {
             return [
                 'id' => $user->encrypted_id,
                 'name' => $user->name,
+                'lastname' => $user->lastname, // Updated field
                 'lastnames' => $user->lastnames,
                 'dateBirth' => $user->dateBirth,
                 'type' => $user->type,
+                'userType' => $user->userType, // Updated field
+                'stateBirth' => $user->stateBirth, // Updated field
                 'CURP' => $user->CURP,
                 'IMSS' => $user->IMSS,
                 'email' => $user->email,
@@ -95,7 +105,7 @@ class UserController extends Controller
         $decryptedId = User::decryptId($id);
 
         if ($userType != 0 && $decryptedId != $userId) {
-            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
+            return response()->json(['message' => 'Unauthorized the user is ' . $userType], 403);
         }
 
         $user = User::find($decryptedId);
@@ -107,9 +117,12 @@ class UserController extends Controller
         return response()->json([
             'id' => $user->encrypted_id,
             'name' => $user->name,
+            'lastname' => $user->lastname, // Updated field
             'lastnames' => $user->lastnames,
             'dateBirth' => $user->dateBirth,
             'type' => $user->type,
+            'userType' => $user->userType, // Updated field
+            'stateBirth' => $user->stateBirth, // Updated field
             'CURP' => $user->CURP,
             'IMSS' => $user->IMSS,
             'email' => $user->email,
@@ -123,7 +136,7 @@ class UserController extends Controller
         $decryptedId = User::decryptId($id);
 
         if ($userType != 0 && $decryptedId != $userId) {
-            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
+            return response()->json(['message' => 'Unauthorized the user is ' . $userType], 403);
         }
 
         $user = User::find($decryptedId);
@@ -138,10 +151,13 @@ class UserController extends Controller
 
             $validator = Validator::make($request, [
                 'name' => 'sometimes|string|max:80',
+                'lastname' => 'sometimes|string|max:80', // Updated field
                 'lastnames' => 'sometimes|string|max:80',
                 'dateBirth' => 'sometimes|date',
                 'areaId' => 'sometimes|integer|exists:areas,id',
                 'type' => 'sometimes|integer|between:0,3',
+                'userType' => 'sometimes|integer|between:0,1', // Updated field
+                'stateBirth' => 'sometimes|integer|between:1,32', // Updated field
                 'CURP' => 'nullable|string|max:45',
                 'IMSS' => 'nullable|string|max:45',
                 'email' => 'sometimes|string|email|max:80',
@@ -163,7 +179,7 @@ class UserController extends Controller
     {
         $userType = JWTAuth::parseToken()->getClaim('userType');
         if ($userType != 0) {
-            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
+            return response()->json(['message' => 'Unauthorized the user is ' . $userType], 403);
         }
 
         $decryptedId = User::decryptId($id);
@@ -184,7 +200,7 @@ class UserController extends Controller
         $userId = JWTAuth::parseToken()->getClaim('userId');
 
         if ($userType != 0) {
-            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
+            return response()->json(['message' => 'Unauthorized the user is ' . $userType], 403);
         }
 
         $user = User::find($userId);
