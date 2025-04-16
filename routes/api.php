@@ -27,7 +27,7 @@ Route::get('/debug', function () {
     return response()->json(['message' => 'Debug route is working']);
 });
 
-Route::middleware('auth:api')->group(function () {
+Route::middleware('jwt.auth')->group(function () {
     //users endpoints
     Route::post('/register', [UserController::class, 'register']);
     Route::get('/users', [UserController::class, 'index']);

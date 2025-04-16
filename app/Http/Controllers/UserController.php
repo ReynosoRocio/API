@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\DB;
-use App\Models\Area;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -15,19 +14,9 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $userType = JWTAuth::parseToken()->getClaim('userType');
-        if ($userType !== 0) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+        if ($userType != 0) {
+            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
         }
-
-        // Desencripta el ID del área
-        $decryptedId = Area::decryptId($request->areaId);
-        
-        if (!$decryptedId) {
-            return response()->json(['message' => 'Area not found or inactive'], 404);
-        }
-
-        // Establece el ID desencriptado
-        $request->merge(['areaId' => $decryptedId]);
 
         // Validar los datos de entrada
         $validator = Validator::make($request->all(), [
@@ -68,7 +57,6 @@ class UserController extends Controller
                 'name' => $user->name,
                 'lastnames' => $user->lastnames,
                 'dateBirth' => $user->dateBirth,
-                'areaId' =>  Area::encryptValue($user->areaId),
                 'type' => $user->type,
                 'CURP' => $user->CURP,
                 'IMSS' => $user->IMSS,
@@ -80,8 +68,8 @@ class UserController extends Controller
     public function index()
     {
         $userType = JWTAuth::parseToken()->getClaim('userType');
-        if ($userType !== 0) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+        if ($userType != 0) {
+            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
         }
 
         $users = User::all()->map(function ($user) {
@@ -90,7 +78,6 @@ class UserController extends Controller
                 'name' => $user->name,
                 'lastnames' => $user->lastnames,
                 'dateBirth' => $user->dateBirth,
-                'areaId' => Area::encryptValue($user->areaId),
                 'type' => $user->type,
                 'CURP' => $user->CURP,
                 'IMSS' => $user->IMSS,
@@ -107,8 +94,8 @@ class UserController extends Controller
         $userId = JWTAuth::parseToken()->getClaim('userId');
         $decryptedId = User::decryptId($id);
 
-        if ($userType !== 0 && $decryptedId != $userId) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+        if ($userType != 0 && $decryptedId != $userId) {
+            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
         }
 
         $user = User::find($decryptedId);
@@ -122,7 +109,6 @@ class UserController extends Controller
             'name' => $user->name,
             'lastnames' => $user->lastnames,
             'dateBirth' => $user->dateBirth,
-            'areaId' => Area::encryptValue($user->areaId),
             'type' => $user->type,
             'CURP' => $user->CURP,
             'IMSS' => $user->IMSS,
@@ -136,8 +122,8 @@ class UserController extends Controller
         $userId = JWTAuth::parseToken()->getClaim('userId');
         $decryptedId = User::decryptId($id);
 
-        if ($userType !== 0 && $decryptedId != $userId) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+        if ($userType != 0 && $decryptedId != $userId) {
+            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
         }
 
         $user = User::find($decryptedId);
@@ -145,13 +131,6 @@ class UserController extends Controller
         if ($user && ($user->status == 1 || ($user->status == 0 && $request->has('status') && $request->status == 1))) {
             // Desencripta el ID del área
             if ($request->has('areaId')) {
-                $decryptedAreaId = Area::decryptId($request->areaId);
-                if (!$decryptedAreaId) {
-                    return response()->json(['message' => 'Area not found or inactive'], 404);
-                }
-
-                // Establece el ID desencriptado
-                $request['areaId'] = (int) $decryptedAreaId;
 
                 // convert $request to array
                 $request = $request->toArray();
@@ -183,8 +162,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         $userType = JWTAuth::parseToken()->getClaim('userType');
-        if ($userType !== 0) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+        if ($userType != 0) {
+            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
         }
 
         $decryptedId = User::decryptId($id);
@@ -204,8 +183,8 @@ class UserController extends Controller
         $userType = JWTAuth::parseToken()->getClaim('userType');
         $userId = JWTAuth::parseToken()->getClaim('userId');
 
-        if ($userType !== 0) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+        if ($userType != 0) {
+            return response()->json(['message' => 'Unauthorized the user is' . $userType], 403);
         }
 
         $user = User::find($userId);

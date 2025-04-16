@@ -20,8 +20,6 @@ class CreateSessionsTable extends Migration
             $table->text('token');
             $table->timestamp(column: 'createdAt')->useCurrent();
             $table->timestamp('expiresAt')->nullable();
-            $table->timestamps();
-
             $table->foreign('userId')->references('id')->on('users');
         });
     }
