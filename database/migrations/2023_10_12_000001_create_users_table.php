@@ -13,20 +13,18 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('names');
-            $table->string('lastnames');
+            $table->string('name');
+            $table->string('lastname');
             $table->date('dateBirth');
-            $table->unsignedBigInteger('areaId');
-            $table->integer('type');
-            $table->string('CURP')->unique()->nullable();
-            $table->string('IMSS')->unique()->nullable();
+            $table->integer('userType')->default(1); // 0 for admin, 1 for user
+            $table->tinyInteger('stateBirth');
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();
 
-            $table->foreign('areaId')->references('id')->on('areas');
         });
     }
 

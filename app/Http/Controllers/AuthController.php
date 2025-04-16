@@ -41,10 +41,7 @@ class AuthController extends Controller
         // Respuesta con el token JWT y tipo de usuario
         return response()->json([
             'token' => $token,
-            'userType' => $user->type,
-            'userId' => $user->encrypted_id, // ID del usuario encriptado
-            'userName' => $user->name . ' ' . $user->lastnames, // Nombre completo del usuario
-            'userEmail' => $user->email, // Correo electrónico del usuario
+            'expiration' => now()->addHours(6)->timestamp, // Cambiado a 6 hora
         ]);
     }
 

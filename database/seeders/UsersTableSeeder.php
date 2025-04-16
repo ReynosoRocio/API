@@ -17,24 +17,20 @@ class UsersTableSeeder extends Seeder
     {
         User::create([
             'name' => 'John',
-            'lastnames' => 'Doe',
+            'lastname' => 'Doe',
             'dateBirth' => '1990-01-01',
-            'areaId' => 1,
-            'type' => 0,
-            'CURP' => 'ABCD123456EFGH7893',
-            'IMSS' => '1234567894',
+            'userType' => 1, // Normal user
+            'stateBirth' => 1, // Example state ID
             'email' => 'john.doe@example.com',
             'password' => Hash::make('password123'), // Encripta la contraseña
         ]);
 
         User::create([
             'name' => 'Jane',
-            'lastnames' => 'Doe',
+            'lastname' => 'Doe',
             'dateBirth' => '1992-02-02',
-            'areaId' => 2,
-            'type' => 1,
-            'CURP' => 'EFGH123456IJKL7893',
-            'IMSS' => '9876543210',
+            'userType' => 0, // Admin user
+            'stateBirth' => 2, // Example state ID
             'email' => 'jane.doe@example.com',
             'password' => Hash::make('password123'), // Encripta la contraseña
         ]);
