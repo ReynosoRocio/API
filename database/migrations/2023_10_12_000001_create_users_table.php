@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('stateBirth');
             $table->string('email')->unique();
             $table->string('password');
+            $table->tinyInteger('status')->default(1); // 0 for inactive, 1 for active
             $table->timestamps();
 
         });

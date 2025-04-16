@@ -76,6 +76,7 @@ class UserController extends Controller
                 'userType' => $user->userType, 
                 'stateBirth' => $user->stateBirth, 
                 'email' => $user->email,
+                'status' => $user->status,
             ];
         });
 
@@ -113,7 +114,12 @@ class UserController extends Controller
     {
         $userType = JWTAuth::parseToken()->getClaim('userType');
         $userId = JWTAuth::parseToken()->getClaim('userId');
-        $decryptedId = User::decryptId($id);
+
+        try {
+            $decryptedId = User::decryptId($id);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Invalid user ID'], 400);
+        }
 
         if ($userType != 0 && $decryptedId != $userId) {
             return response()->json(['message' => 'Unauthorized the user is ' . $userType], 403);
@@ -122,27 +128,27 @@ class UserController extends Controller
         $user = User::find($decryptedId);
 
         if ($user && ($user->status == 1 || ($user->status == 0 && $request->has('status') && $request->status == 1))) {
-            // Desencripta el ID del área
-            if ($request->has('areaId')) {
-
-                // convert $request to array
-                $request = $request->toArray();
-            }
-
-            $validator = Validator::make($request, [
+            $validator = Validator::make($request->all(), [
                 'name' => 'sometimes|string|max:80',
                 'lastname' => 'sometimes|string|max:80', 
                 'dateBirth' => 'sometimes|date',
                 'userType' => 'sometimes|integer|between:0,1', 
                 'stateBirth' => 'sometimes|integer|between:1,32', 
                 'email' => 'sometimes|string|email|max:80',
+                'password' => 'sometimes|string|min:6', // Validación para contraseña
             ]);
 
             if ($validator->fails()) {
                 return response()->json(['errors' => $validator->errors()], 422);
             }
 
-            $user->update($request);
+            // Si el administrador quiere cambiar la contraseña
+            $data = $request->all(); // Convierte el request a un array
+            if ($userType == 0 && $request->has('password')) {
+                $data['password'] = Hash::make($request->password);
+            }
+
+            $user->update($data); // Pasa el array al método update
 
             return response()->json(['message' => 'User updated successfully']);
         } else {
