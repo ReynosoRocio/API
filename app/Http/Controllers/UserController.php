@@ -23,12 +23,8 @@ class UserController extends Controller
             'name' => 'required|string|max:80',
             'lastname' => 'required|string|max:80', // Updated field
             'dateBirth' => 'required|date',
-            'areaId' => 'required|integer|exists:areas,id',
-            'type' => 'required|integer|between:0,3',
             'userType' => 'required|integer|between:0,1', // Updated field
             'stateBirth' => 'required|integer|between:1,32', // Updated field
-            'CURP' => 'nullable|string|max:45|unique:users',
-            'IMSS' => 'nullable|string|max:45|unique:users',
             'email' => 'required|string|email|max:80|unique:users',
             'password' => 'required|string|min:6',
         ]);
@@ -43,12 +39,8 @@ class UserController extends Controller
             'lastname' => $request->lastname, // Updated field
             'lastnames' => $request->lastnames,
             'dateBirth' => $request->dateBirth,
-            'areaId' => $request->areaId,
-            'type' => $request->type,
             'userType' => $request->userType, // Updated field
             'stateBirth' => $request->stateBirth, // Updated field
-            'CURP' => $request->CURP,
-            'IMSS' => $request->IMSS,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -60,13 +52,9 @@ class UserController extends Controller
                 'id' => $user->encrypted_id,
                 'name' => $user->name,
                 'lastname' => $user->lastname, // Updated field
-                'lastnames' => $user->lastnames,
                 'dateBirth' => $user->dateBirth,
-                'type' => $user->type,
                 'userType' => $user->userType, // Updated field
                 'stateBirth' => $user->stateBirth, // Updated field
-                'CURP' => $user->CURP,
-                'IMSS' => $user->IMSS,
                 'email' => $user->email,
             ],
         ], 201);
@@ -84,13 +72,9 @@ class UserController extends Controller
                 'id' => $user->encrypted_id,
                 'name' => $user->name,
                 'lastname' => $user->lastname, // Updated field
-                'lastnames' => $user->lastnames,
                 'dateBirth' => $user->dateBirth,
-                'type' => $user->type,
                 'userType' => $user->userType, // Updated field
                 'stateBirth' => $user->stateBirth, // Updated field
-                'CURP' => $user->CURP,
-                'IMSS' => $user->IMSS,
                 'email' => $user->email,
             ];
         });
@@ -118,13 +102,9 @@ class UserController extends Controller
             'id' => $user->encrypted_id,
             'name' => $user->name,
             'lastname' => $user->lastname, // Updated field
-            'lastnames' => $user->lastnames,
             'dateBirth' => $user->dateBirth,
-            'type' => $user->type,
             'userType' => $user->userType, // Updated field
             'stateBirth' => $user->stateBirth, // Updated field
-            'CURP' => $user->CURP,
-            'IMSS' => $user->IMSS,
             'email' => $user->email,
         ]);
     }
@@ -152,14 +132,9 @@ class UserController extends Controller
             $validator = Validator::make($request, [
                 'name' => 'sometimes|string|max:80',
                 'lastname' => 'sometimes|string|max:80', // Updated field
-                'lastnames' => 'sometimes|string|max:80',
                 'dateBirth' => 'sometimes|date',
-                'areaId' => 'sometimes|integer|exists:areas,id',
-                'type' => 'sometimes|integer|between:0,3',
                 'userType' => 'sometimes|integer|between:0,1', // Updated field
                 'stateBirth' => 'sometimes|integer|between:1,32', // Updated field
-                'CURP' => 'nullable|string|max:45',
-                'IMSS' => 'nullable|string|max:45',
                 'email' => 'sometimes|string|email|max:80',
             ]);
 
