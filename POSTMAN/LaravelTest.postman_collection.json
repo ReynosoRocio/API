@@ -1,0 +1,1139 @@
+{
+	"info": {
+		"_postman_id": "663b0fa2-66b1-4f39-be38-e270aa1c6ef3",
+		"name": "LaravelTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "17755752"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "login admin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jane.doe@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{urlBase}}/login"
+					},
+					"response": [
+						{
+							"name": "response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Feb 2025 23:19:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzQwNjk4MzcyLCJleHAiOjE3NDA3MDE5NzIsIm5iZiI6MTc0MDY5ODM3MiwianRpIjoiVndyOTRCTWE4NVplM0tvbiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.wiH_U93BcfX2lnByF8i6tNvdJ5uAs2v4X7X1BSz5ye4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login usuario normal",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{urlBase}}/login"
+					},
+					"response": [
+						{
+							"name": "response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Feb 2025 23:19:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzQwNjk4MzcyLCJleHAiOjE3NDA3MDE5NzIsIm5iZiI6MTc0MDY5ODM3MiwianRpIjoiVndyOTRCTWE4NVplM0tvbiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.wiH_U93BcfX2lnByF8i6tNvdJ5uAs2v4X7X1BSz5ye4\"\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"123456789439\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{urlBase}}/logout"
+					},
+					"response": [
+						{
+							"name": "response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 27 Feb 2025 23:19:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzQwNjk4MzcyLCJleHAiOjE3NDA3MDE5NzIsIm5iZiI6MTc0MDY5ODM3MiwianRpIjoiVndyOTRCTWE4NVplM0tvbiIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.wiH_U93BcfX2lnByF8i6tNvdJ5uAs2v4X7X1BSz5ye4\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "getUsers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{urlBase}}/users"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/users"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 07:39:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"eyJpdiI6IjRNenFYalhVbXVybEQyZjRGd0s1NHc9PSIsInZhbHVlIjoiZzFOcU5ENHd4Y3dEREU1L2pCSktZdz09IiwibWFjIjoiNWZhODkwZWJlYmNhZWEzYWZjNWFkNzFhYWI4ZDhiMzI4MjBkMTNiNTY1NTU3NTA1ZDk0MzcyNTI4NjYwZmJjNSIsInRhZyI6IiJ9\",\n        \"name\": \"John\",\n        \"lastname\": \"Doe\",\n        \"dateBirth\": \"1990-01-01\",\n        \"userType\": 1,\n        \"stateBirth\": 1,\n        \"email\": \"john.doe@example.com\",\n        \"status\": 1\n    },\n    {\n        \"id\": \"eyJpdiI6InlMSmU4bVpjd0ZRQ2xSWHdiU1AwNnc9PSIsInZhbHVlIjoiTklCTEhHM1BUWGVtWWJkUGdHRlZUdz09IiwibWFjIjoiOTE1OWU1M2RhOTE3ODAyM2I1NjBlMTk0Y2VhMjdjMzM3MWM1MDg2Zjg5MjM1YjNmZGYwYjkyOGZmMDg4ZTU4YSIsInRhZyI6IiJ9\",\n        \"name\": \"Jane\",\n        \"lastname\": \"Doe\",\n        \"dateBirth\": \"1992-02-02\",\n        \"userType\": 0,\n        \"stateBirth\": 2,\n        \"email\": \"jane.doe@example.com\",\n        \"status\": 1\n    },\n    {\n        \"id\": \"eyJpdiI6InRpMmI2TWhGZ1VGZW1SQi9TV2pNZEE9PSIsInZhbHVlIjoiYW1BVm9JMExQSUFyUlFyNFljbWV6Zz09IiwibWFjIjoiMzVhNjFjMjFkMmExZjQ3ZGI3M2IyZDEzZWRlZjYwMzFkYzYyZjU0NDY3YzViMWU1YTZhN2JkOGUwOWE0NjlkZCIsInRhZyI6IiJ9\",\n        \"name\": \"Rocio\",\n        \"lastname\": \"Reyn\",\n        \"dateBirth\": \"1990-01-01\",\n        \"userType\": 0,\n        \"stateBirth\": 3,\n        \"email\": \"rocioreynosoram@gmail.com\",\n        \"status\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getUserById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"names\": \"John\",\r\n    \"lastnames\": \"Doe\",\r\n    \"dateBirth\": \"1990-01-01\",\r\n    \"areaId\": 1,\r\n    \"type\": 0,\r\n    \"CURP\": \"ABCD123456EFGH7890\",\r\n    \"IMSS\": \"1234567890\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{urlBase}}/user/eyJpdiI6IjNIV25lcC9DN2xmY0Rob1VjckhsSlE9PSIsInZhbHVlIjoiZGRTb0N4WGp2Lzh3WG5ZbUxObGU5UT09IiwibWFjIjoiYmI1YTIyZWFiYTY3NjA0Y2Q5Mzk0MmE2NWMzNGI3MDA3MGNjMWJhMzRkNGNkZDRmODVmZTAwYTAxMjRlMjNkOSIsInRhZyI6IiJ9"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"names\": \"John\",\r\n    \"lastnames\": \"Doe\",\r\n    \"dateBirth\": \"1990-01-01\",\r\n    \"areaId\": 1,\r\n    \"type\": 0,\r\n    \"CURP\": \"ABCD123456EFGH7890\",\r\n    \"IMSS\": \"1234567890\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/user/eyJpdiI6IjNIV25lcC9DN2xmY0Rob1VjckhsSlE9PSIsInZhbHVlIjoiZGRTb0N4WGp2Lzh3WG5ZbUxObGU5UT09IiwibWFjIjoiYmI1YTIyZWFiYTY3NjA0Y2Q5Mzk0MmE2NWMzNGI3MDA3MGNjMWJhMzRkNGNkZDRmODVmZTAwYTAxMjRlMjNkOSIsInRhZyI6IiJ9"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 06:57:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"eyJpdiI6IjNTVk15eEwwVUU2cHAyY1RQQ3AzQUE9PSIsInZhbHVlIjoiL0Vob212Q0h0ZFdrZjhIVmFuTHF1Zz09IiwibWFjIjoiY2E2M2FhZTE1OTllNzNmZjcxYzJiYzk2MTVkM2UyYzlhOGFkY2JjYzg5YTg3Nzg3MGRjOTIxZmVmMTk1OWFmZiIsInRhZyI6IiJ9\",\n    \"name\": \"John\",\n    \"lastname\": \"Doe\",\n    \"dateBirth\": \"1990-01-01\",\n    \"userType\": 1,\n    \"stateBirth\": 1,\n    \"email\": \"john.doe@example.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{urlBase}}/profile"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/profile"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 07:17:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"eyJpdiI6IkovelNXa3R1RDZSZkdFOHdjMGhaQXc9PSIsInZhbHVlIjoiR3kvVDl5ejcvTFROOXArR3JuZ1lTdz09IiwibWFjIjoiNGQzYjdjZDk1NWVhZjJmNDQyMzhlMjRhNDc2NjA3ZWI4ZTY0N2E3YjM0ZDBkNGU4ZWFlMGE3OGUxZTZjMjBkYiIsInRhZyI6IiJ9\",\n    \"name\": \"Jane\",\n    \"lastname\": \"Doe\",\n    \"dateBirth\": \"1992-02-02\",\n    \"userType\": 0,\n    \"stateBirth\": 2,\n    \"email\": \"jane.doe@example.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{tokenRainbow}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rocio\",\r\n    \"lastname\": \"Reyn\",\r\n    \"dateBirth\": \"1990-01-01\",\r\n    \"userType\": 0, //0 admin, 1 supervisor, 3 empleado\r\n    \"stateBirth\": \"3\",\r\n    \"email\": \"rocioreynosoram@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{urlBase}}/register"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Rocio\",\r\n    \"lastname\": \"Reyn\",\r\n    \"dateBirth\": \"1990-01-01\",\r\n    \"userType\": 0, //0 admin, 1 supervisor, 3 empleado\r\n    \"stateBirth\": \"3\",\r\n    \"email\": \"rocioreynosoram@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/register"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 06:51:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User registered successfully\",\n    \"user\": {\n        \"id\": \"eyJpdiI6Im1SL3pVbEE2WHlUbmY3TVFGNzU5eFE9PSIsInZhbHVlIjoibUxSQ3hxV0ZubnhOcmhKU2loaUdRQT09IiwibWFjIjoiNzMzMzIyNjJlYmRlMzA2NmI1NzQ0NjkzNzhiMDJkNjA3NWYzNzY4ZGZmZjFlMzg5NTMxNDk3YWE5NzMwNjdhMiIsInRhZyI6IiJ9\",\n        \"name\": \"Rocio\",\n        \"lastname\": \"Reyn\",\n        \"dateBirth\": \"1990-01-01\",\n        \"userType\": 0,\n        \"stateBirth\": \"3\",\n        \"email\": \"rocioreynosoram@gmail.com\"\n    }\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Rocio\",\r\n    \"lastname\": \"Reyn\",\r\n    \"dateBirth\": \"1990-01-01\",\r\n    \"userType\": 0, //0 admin, 1 supervisor, 3 empleado\r\n    \"stateBirth\": \"3ede\",\r\n    \"email\": \"rocioreynosoram@gmail.com\",\r\n    \"password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/register"
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 06:51:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"stateBirth\": [\n            \"The state birth must be an integer.\"\n        ],\n        \"email\": [\n            \"The email has already been taken.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rocio\",\r\n    \"lastname\": \"Reyn\",\r\n    \"dateBirth\": \"1997-01-01\",\r\n    \"userType\": 0, //0 admin, 1 supervisor, 3 empleado\r\n    \"stateBirth\": \"3ee\",\r\n    \"email\": \"rocioreynosoram@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{urlBase}}/user/eyJpdiI6InRpMmI2TWhGZ1VGZW1SQi9TV2pNZEE9PSIsInZhbHVlIjoiYW1BVm9JMExQSUFyUlFyNFljbWV6Zz09IiwibWFjIjoiMzVhNjFjMjFkMmExZjQ3ZGI3M2IyZDEzZWRlZjYwMzFkYzYyZjU0NDY3YzViMWU1YTZhN2JkOGUwOWE0NjlkZCIsInRhZyI6IiJ9"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Rocio\",\r\n    \"lastname\": \"Reyn\",\r\n    \"dateBirth\": \"1997-01-01\",\r\n    \"userType\": 0, //0 admin, 1 supervisor, 3 empleado\r\n    \"stateBirth\": \"3\",\r\n    \"email\": \"rocioreynosoram@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/user/eyJpdiI6InRpMmI2TWhGZ1VGZW1SQi9TV2pNZEE9PSIsInZhbHVlIjoiYW1BVm9JMExQSUFyUlFyNFljbWV6Zz09IiwibWFjIjoiMzVhNjFjMjFkMmExZjQ3ZGI3M2IyZDEzZWRlZjYwMzFkYzYyZjU0NDY3YzViMWU1YTZhN2JkOGUwOWE0NjlkZCIsInRhZyI6IiJ9"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 07:43:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User updated successfully\"\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Rocio\",\r\n    \"lastname\": \"Reyn\",\r\n    \"dateBirth\": \"1997-01-01\",\r\n    \"userType\": 0, //0 admin, 1 supervisor, 3 empleado\r\n    \"stateBirth\": \"3\",\r\n    \"email\": \"rocioreynosoram@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/user/eyJpdiI6InRpMmI2TWhGZ1VGZW1SQi9TV2pNZEE9PSIsInZhbHVlIjoiYW1BVm9JMExQSUFyUlFyNFljbWV6Zz09IiwibWFjIjoiMzVhNjFjMjFkMmExZjQ3ZGI3M2IyZDEzZWRlZjYwMzFkYzYyZjU0NDY3YzViMWU1YTZhN2JkOGUwOWE0NjlkZCIsInRhZyI6IiJ912"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 07:44:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid user ID\"\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Rocio\",\r\n    \"lastname\": \"Reyn\",\r\n    \"dateBirth\": \"1997-01-01\",\r\n    \"userType\": 0, //0 admin, 1 supervisor, 3 empleado\r\n    \"stateBirth\": \"3ee\",\r\n    \"email\": \"rocioreynosoram@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/user/eyJpdiI6InRpMmI2TWhGZ1VGZW1SQi9TV2pNZEE9PSIsInZhbHVlIjoiYW1BVm9JMExQSUFyUlFyNFljbWV6Zz09IiwibWFjIjoiMzVhNjFjMjFkMmExZjQ3ZGI3M2IyZDEzZWRlZjYwMzFkYzYyZjU0NDY3YzViMWU1YTZhN2JkOGUwOWE0NjlkZCIsInRhZyI6IiJ9"
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 16 Apr 2025 07:44:43 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"stateBirth\": [\n            \"The state birth must be an integer.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{urlBase}}/user/eyJpdiI6InFlUzc0Z05paFY0QS93bk1DZFhidkE9PSIsInZhbHVlIjoiWGd0L2tpQ0lDalFnOTRiTXpDdklFdz09IiwibWFjIjoiNTRlYWUzOWIyODNlZWY1MTRiYmYzYTA0NTAzMTQ4YWIzYjdlNTAwM2M4Mzc5NzJkNjgzOWNlMmNmOTQzYjM2ZSIsInRhZyI6IiJ9"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/user/eyJpdiI6InFlUzc0Z05paFY0QS93bk1DZFhidkE9PSIsInZhbHVlIjoiWGd0L2tpQ0lDalFnOTRiTXpDdklFdz09IiwibWFjIjoiNTRlYWUzOWIyODNlZWY1MTRiYmYzYTA0NTAzMTQ4YWIzYjdlNTAwM2M4Mzc5NzJkNjgzOWNlMmNmOTQzYjM2ZSIsInRhZyI6IiJ9"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Apr 2025 04:21:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "54"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User deleted successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "change-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"new_password\": \"123456789439\",\r\n    \"current_password\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{urlBase}}/user/change-password"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"new_password\": \"password123\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"current_password\": \"123456789439\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/user/change-password"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Apr 2025 04:40:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Password changed successfully\"\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"new_password\": \"123456789439\",\r\n    \"email\": \"john.doe111@example.com\",\r\n    \"current_password\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{urlBase}}/user/change-password"
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Apr 2025 04:40:43 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"email\": [\n            \"The selected email is invalid.\"\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": {
+					"token": "{{tokenRainbow}}"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{tokenRainbow}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
