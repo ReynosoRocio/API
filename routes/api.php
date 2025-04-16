@@ -36,6 +36,9 @@ Route::middleware('jwt.auth')->group(function () {
     Route::delete('/user/{id}', [UserController::class, 'destroy']);
     Route::post('/user/change-password', [UserController::class, 'changePassword']);
 
+    // get my profile
+    Route::get('/user/profile', [UserController::class, 'profile']);
+    
     // Logout endpoint
     Route::post('/logout', [AuthController::class, 'logout']);
 

@@ -21,10 +21,10 @@ class UserController extends Controller
         // Validar los datos de entrada
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:80',
-            'lastname' => 'required|string|max:80', // Updated field
+            'lastname' => 'required|string|max:80', 
             'dateBirth' => 'required|date',
-            'userType' => 'required|integer|between:0,1', // Updated field
-            'stateBirth' => 'required|integer|between:1,32', // Updated field
+            'userType' => 'required|integer|between:0,1', 
+            'stateBirth' => 'required|integer|between:1,32', 
             'email' => 'required|string|email|max:80|unique:users',
             'password' => 'required|string|min:6',
         ]);
@@ -36,11 +36,11 @@ class UserController extends Controller
         // Crear el usuario
         $user = User::create([
             'name' => $request->name,
-            'lastname' => $request->lastname, // Updated field
+            'lastname' => $request->lastname, 
             'lastnames' => $request->lastnames,
             'dateBirth' => $request->dateBirth,
-            'userType' => $request->userType, // Updated field
-            'stateBirth' => $request->stateBirth, // Updated field
+            'userType' => $request->userType, 
+            'stateBirth' => $request->stateBirth, 
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
@@ -51,10 +51,10 @@ class UserController extends Controller
             'user' => [
                 'id' => $user->encrypted_id,
                 'name' => $user->name,
-                'lastname' => $user->lastname, // Updated field
+                'lastname' => $user->lastname, 
                 'dateBirth' => $user->dateBirth,
-                'userType' => $user->userType, // Updated field
-                'stateBirth' => $user->stateBirth, // Updated field
+                'userType' => $user->userType, 
+                'stateBirth' => $user->stateBirth, 
                 'email' => $user->email,
             ],
         ], 201);
@@ -71,10 +71,10 @@ class UserController extends Controller
             return [
                 'id' => $user->encrypted_id,
                 'name' => $user->name,
-                'lastname' => $user->lastname, // Updated field
+                'lastname' => $user->lastname, 
                 'dateBirth' => $user->dateBirth,
-                'userType' => $user->userType, // Updated field
-                'stateBirth' => $user->stateBirth, // Updated field
+                'userType' => $user->userType, 
+                'stateBirth' => $user->stateBirth, 
                 'email' => $user->email,
             ];
         });
@@ -101,10 +101,10 @@ class UserController extends Controller
         return response()->json([
             'id' => $user->encrypted_id,
             'name' => $user->name,
-            'lastname' => $user->lastname, // Updated field
+            'lastname' => $user->lastname, 
             'dateBirth' => $user->dateBirth,
-            'userType' => $user->userType, // Updated field
-            'stateBirth' => $user->stateBirth, // Updated field
+            'userType' => $user->userType, 
+            'stateBirth' => $user->stateBirth, 
             'email' => $user->email,
         ]);
     }
@@ -131,10 +131,10 @@ class UserController extends Controller
 
             $validator = Validator::make($request, [
                 'name' => 'sometimes|string|max:80',
-                'lastname' => 'sometimes|string|max:80', // Updated field
+                'lastname' => 'sometimes|string|max:80', 
                 'dateBirth' => 'sometimes|date',
-                'userType' => 'sometimes|integer|between:0,1', // Updated field
-                'stateBirth' => 'sometimes|integer|between:1,32', // Updated field
+                'userType' => 'sometimes|integer|between:0,1', 
+                'stateBirth' => 'sometimes|integer|between:1,32', 
                 'email' => 'sometimes|string|email|max:80',
             ]);
 
@@ -200,5 +200,25 @@ class UserController extends Controller
         $user->update(['password' => Hash::make($request->new_password)]);
 
         return response()->json(['message' => 'Password changed successfully']);
+    }
+
+    public function profile()
+    {
+        $userId = JWTAuth::parseToken()->getClaim('userId');
+        $user = User::find($userId);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        return response()->json([
+            'id' => $user->encrypted_id,
+            'name' => $user->name,
+            'lastname' => $user->lastname, 
+            'dateBirth' => $user->dateBirth,
+            'userType' => $user->userType, 
+            'stateBirth' => $user->stateBirth, 
+            'email' => $user->email,
+        ]);
     }
 }
