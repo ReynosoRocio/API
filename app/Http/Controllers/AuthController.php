@@ -28,7 +28,7 @@ class AuthController extends Controller
         $user = auth()->user();
 
         // Agregar claims personalizados al token
-        $token = JWTAuth::claims(['userId' => $user->id, 'userType' => $user->type])->fromUser($user);
+        $token = JWTAuth::claims(['userId' => $user->id, 'userType' => $user->userType])->fromUser($user);
 
         // Guardar el token en la tabla `sessions`
         DB::table('sessions')->insert([
